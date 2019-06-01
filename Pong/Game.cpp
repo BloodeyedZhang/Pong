@@ -10,6 +10,7 @@
 
 Game::Game()
 :mWindow(nullptr)
+,mRenderer(nullptr)
 ,mIsRunning(true)
 {
 }
@@ -36,6 +37,17 @@ bool Game::Initialize()
         SDL_Log("创建窗体失败：%s", SDL_GetError());
         return false;
     }
+    // 初始化渲染器
+    mRenderer = SDL_CreateRenderer(
+                                   mWindow,
+                                   -1,
+                                   SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
+                                   );
+    if (!mRenderer)
+    {
+        SDL_Log("创建渲染器失败：%s", SDL_GetError());
+        return false;
+    }
     return true;
 }
 
@@ -51,6 +63,7 @@ void Game::RunLoop()
 
 void Game::Shutdown()
 {
+    SDL_DestroyRenderer(mRenderer);
     SDL_DestroyWindow(mWindow);
     SDL_Quit();
 }
@@ -87,5 +100,16 @@ void Game::UpdateGame()
 
 void Game::GenerateOutput()
 {
-    
+    // 设置Tiffany蓝
+    SDL_SetRenderDrawColor(
+                           mRenderer,
+                           129,         // R
+                           216,         // G
+                           209,         // B
+                           255          // A
+                           );
+    // 清理后缓冲区
+    SDL_RenderClear(mRenderer);
+    // 交换前后缓冲区
+    SDL_RenderPresent(mRenderer);
 }

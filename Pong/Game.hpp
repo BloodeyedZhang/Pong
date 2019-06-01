@@ -32,6 +32,8 @@ private:
     
     // 通过SDL创建窗体
     SDL_Window* mWindow;
+    // 渲染器
+    SDL_Renderer* mRenderer;
     // 继续运行
     bool mIsRunning;
 };
