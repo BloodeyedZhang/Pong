@@ -6,10 +6,15 @@
 //  Copyright © 2019 张佳俊. All rights reserved.
 //
 
-#include <iostream>
+#include "Game.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    Game game;
+    bool success = game.Initialize();
+    if (success)
+    {
+        game.RunLoop();
+    }
+    game.Shutdown();
     return 0;
 }
