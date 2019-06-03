@@ -11,6 +11,16 @@
 
 #include <SDL2/SDL.h>
 
+const int kThickness = 15; //墙的厚度
+const float kPaddleH = 100.0f; // 控制球拍的长度
+
+// Vector2 结构之存储x和y坐标
+struct Vector2
+{
+    float x;
+    float y;
+};
+
 // Game class
 class Game
 {
@@ -36,6 +46,12 @@ private:
     SDL_Renderer* mRenderer;
     // 继续运行
     bool mIsRunning;
+    // 球拍位置
+    Vector2 mPaddlePos;
+    // 球的位置
+    Vector2 mBallPos;
+    // 运行时间
+    Uint32 mTicksCount;
 };
 
 #endif /* Game_hpp */
