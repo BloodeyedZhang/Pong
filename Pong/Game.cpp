@@ -13,6 +13,7 @@ Game::Game()
 ,mRenderer(nullptr)
 ,mIsRunning(true)
 ,mTicksCount(0)
+,mPaddleDir(0)
 {
 }
 
@@ -54,6 +55,7 @@ bool Game::Initialize()
     mPaddlePos.y = 768.0f / 2.0f;
     mBallPos.x = 1024.0f / 2.0f;
     mBallPos.y = 768.0f / 2.0f;
+    mBallVel = {-200.0f, 235.0f};
     
     return true;
 }
@@ -98,6 +100,14 @@ void Game::ProcessInpput()
     {
         mIsRunning = false;
     }
+    // 通过w/s更新球拍位置
+    mPaddleDir = 0;
+    if (stat[SDL_SCANCODE_W]) {
+        mPaddleDir -= 1;
+    }
+    else if (stat[SDL_SCANCODE_S]) {
+        mPaddleDir += 1;
+    }
 }
 
 void Game::UpdateGame()
@@ -117,6 +127,52 @@ void Game::UpdateGame()
     
     // 更新运行时间
     mTicksCount = SDL_GetTicks();
+    
+    // 根据方向更新球拍位置
+    if (mPaddleDir != 0) {
+        mPaddlePos.y += mPaddleDir * 300.0f * deltaTime;
+    }
+    // 确保球拍不会移出窗口
+    if (mPaddlePos.y < (kPaddleH / 2.0f + kThickness)) {
+        mPaddlePos.y = kPaddleH / 2.0f + kThickness;
+    }
+    else if (mPaddlePos.y > (768.0 - kPaddleH / 2.0f - kThickness)) {
+        mPaddlePos.y = 768.0 - kPaddleH / 2.0f - kThickness;
+    }
+    
+    // 更新球
+    // 球是否和顶部墙相碰
+    if (mBallPos.y <= kThickness && mBallVel.y < 0.0f) {
+        mBallVel.y *= -1.0f;
+    }
+    // 球是否和底部墙相碰
+    else if (mBallPos.y >= (768 - kThickness) && mBallVel.y > 0.0f) {
+        mBallVel.y *= -1.0f;
+    }
+    // 是否和球拍相交
+    float diff = mPaddlePos.y - mBallPos.y;
+    diff = diff > 0.0f ? diff : -diff;
+    if (
+        // y分量足够小
+        diff <= kPaddleH / 2.0f &&
+        // 球拍的x范围内
+        mBallPos.x <= 25.0f && mBallPos.x >= 20.0f &&
+        // 球正在向左运动
+        mBallVel.x < 0.0f
+        )
+    {
+        mBallVel.x *= -1.0f;
+    }
+    // 如果球出了窗口，则游戏结束
+    else if (mBallPos.x <= 0.0f) {
+        mIsRunning = false;
+    }
+    // 如果球碰到右边的墙，则反弹
+    else if (mBallPos.x >= (1024.0 - kThickness) && mBallVel.x > 0.0f) {
+        mBallVel.x *= -1.0f;
+    }
+    mBallPos.x += mBallVel.x * deltaTime;
+    mBallPos.y += mBallVel.y * deltaTime;
 }
 
 void Game::GenerateOutput()

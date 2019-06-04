@@ -48,8 +48,12 @@ private:
     bool mIsRunning;
     // 球拍位置
     Vector2 mPaddlePos;
+    // 球拍方向
+    int mPaddleDir;
     // 球的位置
     Vector2 mBallPos;
+    // 球的速度
+    Vector2 mBallVel;
     // 运行时间
     Uint32 mTicksCount;
 };
