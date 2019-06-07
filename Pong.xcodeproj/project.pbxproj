@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B05C36B022AAC63D0035A955 /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B05C36AE22AAC63D0035A955 /* Actor.cpp */; };
+		B05C36B322AAC7A90035A955 /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B05C36B122AAC7A90035A955 /* Component.cpp */; };
 		B07A30D322A2BE7100590B21 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07A30D222A2BE7100590B21 /* main.cpp */; };
 		B07A30DB22A2C2B900590B21 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B07A30DA22A2C2B900590B21 /* libSDL2-2.0.0.dylib */; };
 		B07A30DE22A2C37400590B21 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07A30DC22A2C37400590B21 /* Game.cpp */; };
@@ -25,6 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B05C36AE22AAC63D0035A955 /* Actor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
+		B05C36AF22AAC63D0035A955 /* Actor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Actor.hpp; sourceTree = "<group>"; };
+		B05C36B122AAC7A90035A955 /* Component.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
+		B05C36B222AAC7A90035A955 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		B07A30CF22A2BE7100590B21 /* Pong */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pong; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07A30D222A2BE7100590B21 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B07A30DA22A2C2B900590B21 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../usr/local/Cellar/sdl2/2.0.9_1/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
@@ -67,6 +73,10 @@
 				B07A30D222A2BE7100590B21 /* main.cpp */,
 				B07A30DC22A2C37400590B21 /* Game.cpp */,
 				B07A30DD22A2C37400590B21 /* Game.hpp */,
+				B05C36AE22AAC63D0035A955 /* Actor.cpp */,
+				B05C36AF22AAC63D0035A955 /* Actor.hpp */,
+				B05C36B122AAC7A90035A955 /* Component.cpp */,
+				B05C36B222AAC7A90035A955 /* Component.hpp */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -135,6 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B05C36B022AAC63D0035A955 /* Actor.cpp in Sources */,
+				B05C36B322AAC7A90035A955 /* Component.cpp in Sources */,
 				B07A30D322A2BE7100590B21 /* main.cpp in Sources */,
 				B07A30DE22A2C37400590B21 /* Game.cpp in Sources */,
 			);

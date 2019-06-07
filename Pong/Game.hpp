@@ -10,6 +10,8 @@
 #define Game_hpp
 
 #include <SDL2/SDL.h>
+#include <vector>
+#include "Actor.hpp"
 
 const int kThickness = 15; //墙的厚度
 const float kPaddleH = 100.0f; // 控制球拍的长度
@@ -56,6 +58,17 @@ private:
     Vector2 mBallVel;
     // 运行时间
     Uint32 mTicksCount;
+    
+    // 游戏中所有的 actor
+    std::vector<class Actor*> mActors;
+    // 任意待定的 actor
+    std::vector<class Actor*> mPendingActors;
+    
+    void AddActor(class Actor* actor);
+    
+    void RemoveActor(class Actor* actor);
+    
+    bool mUpdatingActors;
 };
 
 #endif /* Game_hpp */

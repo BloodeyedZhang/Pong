@@ -128,6 +128,37 @@ void Game::UpdateGame()
     // 更新运行时间
     mTicksCount = SDL_GetTicks();
     
+    // 更新所欲的 actors
+    mUpdatingActors = true;
+    for (auto actor : mActors)
+    {
+        actor->Update(deltaTime);
+    }
+    mUpdatingActors = false;
+    
+    // 将待定的 actor 加入到 mActors
+    for (auto pending : mPendingActors)
+    {
+        mActors.emplace_back(pending);
+    }
+    mPendingActors.clear();
+    
+    // 添加废弃的 actor 到另一个临时变量
+    std::vector<Actor *> deadActors;
+    for (auto actor : mActors)
+    {
+        if (actor->GetState() == ActorState::EDead)
+        {
+            deadActors.emplace_back(actor);
+        }
+    }
+    
+    // 删除废弃的 actor
+    for (auto actor : deadActors)
+    {
+        delete actor;
+    }
+    
     // 根据方向更新球拍位置
     if (mPaddleDir != 0) {
         mPaddlePos.y += mPaddleDir * 300.0f * deltaTime;
@@ -230,4 +261,34 @@ void Game::GenerateOutput()
     
     // 交换前后缓冲区
     SDL_RenderPresent(mRenderer);
+}
+
+void Game::AddActor(Actor *actor)
+{
+    if (mUpdatingActors)
+    {
+        mPendingActors.emplace_back(actor);
+    }
+    else
+    {
+        mActors.emplace_back(actor);
+    }
+}
+
+void Game::RemoveActor(Actor *actor)
+{
+    auto iter = std::find(mPendingActors.begin(), mPendingActors.end(), actor);
+    if (iter != mPendingActors.end())
+    {
+        // 交换到尾部,避免复制
+        std::iter_swap(iter, mPendingActors.end() - 1);
+        mPendingActors.pop_back();
+    }
+    
+    iter = std::find(mActors.begin(), mActors.end(), actor);
+    if (iter != mActors.end())
+    {
+        std::iter_swap(iter, mActors.end() - 1);
+        mActors.pop_back();
+    }
 }
