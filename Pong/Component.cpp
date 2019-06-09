@@ -7,3 +7,15 @@
 //
 
 #include "Component.hpp"
+
+Component::Component(Actor* actor, int updateOrder)
+{
+    this->mOwer = actor;
+    this->mUpdateOrder = updateOrder;
+    std::cout << "Component construct" << std::endl;
+}
+
+Component::~Component()
+{
+    
+}

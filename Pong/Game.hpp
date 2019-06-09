@@ -11,17 +11,12 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
+#include "Consts.h"
 #include "Actor.hpp"
 
 const int kThickness = 15; //墙的厚度
 const float kPaddleH = 100.0f; // 控制球拍的长度
 
-// Vector2 结构之存储x和y坐标
-struct Vector2
-{
-    float x;
-    float y;
-};
 
 // Game class
 class Game

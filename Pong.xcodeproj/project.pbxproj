@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B00E719522ABF83E00FFA339 /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B00E719322ABF83E00FFA339 /* Paddle.cpp */; };
+		B00E719822AC13DF00FFA339 /* TransformComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B00E719622AC13DF00FFA339 /* TransformComponent.cpp */; };
+		B014298422ACA26B008853A5 /* InputComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B014298222ACA26B008853A5 /* InputComponent.cpp */; };
 		B05C36B022AAC63D0035A955 /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B05C36AE22AAC63D0035A955 /* Actor.cpp */; };
 		B05C36B322AAC7A90035A955 /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B05C36B122AAC7A90035A955 /* Component.cpp */; };
 		B07A30D322A2BE7100590B21 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07A30D222A2BE7100590B21 /* main.cpp */; };
@@ -27,6 +30,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B00E719322ABF83E00FFA339 /* Paddle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
+		B00E719422ABF83E00FFA339 /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
+		B00E719622AC13DF00FFA339 /* TransformComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TransformComponent.cpp; sourceTree = "<group>"; };
+		B00E719722AC13DF00FFA339 /* TransformComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
+		B00E719922AC1BDB00FFA339 /* Consts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
+		B014298222ACA26B008853A5 /* InputComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InputComponent.cpp; sourceTree = "<group>"; };
+		B014298322ACA26B008853A5 /* InputComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = InputComponent.hpp; sourceTree = "<group>"; };
 		B05C36AE22AAC63D0035A955 /* Actor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
 		B05C36AF22AAC63D0035A955 /* Actor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Actor.hpp; sourceTree = "<group>"; };
 		B05C36B122AAC7A90035A955 /* Component.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
@@ -77,6 +87,13 @@
 				B05C36AF22AAC63D0035A955 /* Actor.hpp */,
 				B05C36B122AAC7A90035A955 /* Component.cpp */,
 				B05C36B222AAC7A90035A955 /* Component.hpp */,
+				B00E719322ABF83E00FFA339 /* Paddle.cpp */,
+				B00E719422ABF83E00FFA339 /* Paddle.hpp */,
+				B00E719622AC13DF00FFA339 /* TransformComponent.cpp */,
+				B00E719722AC13DF00FFA339 /* TransformComponent.hpp */,
+				B00E719922AC1BDB00FFA339 /* Consts.h */,
+				B014298222ACA26B008853A5 /* InputComponent.cpp */,
+				B014298322ACA26B008853A5 /* InputComponent.hpp */,
 			);
 			path = Pong;
 			sourceTree = "<group>";
@@ -145,10 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B014298422ACA26B008853A5 /* InputComponent.cpp in Sources */,
 				B05C36B022AAC63D0035A955 /* Actor.cpp in Sources */,
 				B05C36B322AAC7A90035A955 /* Component.cpp in Sources */,
 				B07A30D322A2BE7100590B21 /* main.cpp in Sources */,
 				B07A30DE22A2C37400590B21 /* Game.cpp in Sources */,
+				B00E719822AC13DF00FFA339 /* TransformComponent.cpp in Sources */,
+				B00E719522ABF83E00FFA339 /* Paddle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

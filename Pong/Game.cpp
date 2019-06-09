@@ -7,6 +7,7 @@
 //
 
 #include "Game.hpp"
+#include "Paddle.hpp"
 
 Game::Game()
 :mWindow(nullptr)
@@ -56,6 +57,7 @@ bool Game::Initialize()
     mBallPos.x = 1024.0f / 2.0f;
     mBallPos.y = 768.0f / 2.0f;
     mBallVel = {-200.0f, 235.0f};
+    new Paddle();
     
     return true;
 }
@@ -147,7 +149,7 @@ void Game::UpdateGame()
     std::vector<Actor *> deadActors;
     for (auto actor : mActors)
     {
-        if (actor->GetState() == ActorState::EDead)
+        if (actor->GetState() == Actor::EDead)
         {
             deadActors.emplace_back(actor);
         }

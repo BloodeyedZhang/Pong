@@ -9,6 +9,8 @@
 #ifndef Component_hpp
 #define Component_hpp
 
+#include <iostream>
+#include "Consts.h"
 #include "Actor.hpp"
 
 class Component
@@ -19,7 +21,7 @@ public:
     // 析构
     virtual ~Component();
     // 通过增量时间更新组件
-    virtual void Update(float deltaTime);
+    virtual void Update(float deltaTime) = 0;
     
     int GetUpdateOrder() const { return mUpdateOrder; };
 protected:

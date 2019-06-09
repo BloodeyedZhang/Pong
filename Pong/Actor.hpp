@@ -9,20 +9,26 @@
 #ifndef Actor_hpp
 #define Actor_hpp
 
-enum ActorState
-{
-    EActive,
-    EDead
-};
+#include <vector>
+#include "Component.hpp"
+
 
 class Actor
 {
 public:
-    virtual void Update(float deltaTime);
-    virtual void Draw();
-    ActorState GetState() { return mState; };
+    virtual ~Actor() = 0;
+    void Update(float deltaTime);
+    enum State { EActive, EDead };
+    State GetState() { return mState; };
 protected:
-    ActorState mState;
+    // 当前角色状态
+    State mState;
+    // 组件集合
+    std::vector<class Component*> mComponents;
+    virtual void UpdateActor(float deltaTime) = 0;
+    void AddComponent(class Component* comp);
+    void RemoveComponent(class Component* comp);
+    void UpdateComponents(float deltaTime);
 };
 
 #endif /* Actor_hpp */
